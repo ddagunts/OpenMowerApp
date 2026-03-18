@@ -24,8 +24,7 @@ RUN set -eux; \
     echo "--web-renderer flag not supported; using default"; \
     RENDER_OPT=""; \
     fi; \
-    flutter build web --release $RENDER_OPT; \
-    if [ "$WEB_RENDERER" = "html" ]; then rm -rf build/web/canvaskit || true; fi; \
+    flutter build web --no-web-resources-cdn --release $RENDER_OPT; \
     find build/web -maxdepth 1 -name '*.map' -delete 2>/dev/null || true; \
     find build/web/assets -name '*.map' -delete 2>/dev/null || true
 
